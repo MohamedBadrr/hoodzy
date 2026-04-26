@@ -4,11 +4,19 @@ import {
   Menu,
   Search,
   ShoppingCartIcon,
-  X,
 } from "lucide-react";
 import UpperHeader from "./UpperHeader";
 import { Input } from "../../components/ui/input";
 import { Link } from "react-router";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../../components/ui/drawer";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,17 +45,49 @@ const Navbar = () => {
       <header className="border-b border-black/10 bg-white w-full">
         <div className="mx-auto flex max-w-310 items-center justify-between gap-4 px-4 py-5 sm:px-8 lg:px-10 xl:px-0">
           <div className="flex items-center gap-4">
-            <button
-              type="button"
-              className="inline-flex size-6 items-center justify-center lg:hidden"
-              aria-label={
-                isMenuOpen ? "Close navigation menu" : "Open navigation menu"
-              }
-              aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen((value) => !value)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen} direction="left">
+              <DrawerTrigger asChild>
+                <button
+                  type="button"
+                  className="inline-flex size-6 items-center justify-center lg:hidden"
+                  aria-label="Open navigation menu"
+                >
+                  <Menu size={24} />
+                </button>
+              </DrawerTrigger>
+
+              <DrawerContent className="w-[82vw] max-w-80 rounded-r-[20px] border-r border-black/10 bg-white px-4 pb-6 pt-2 lg:hidden">
+                <DrawerHeader className="px-0 text-left">
+                  <DrawerTitle className="font-inter text-2xl font-bold text-black">
+                    SHOP.CO
+                  </DrawerTitle>
+                  <DrawerDescription>
+                    Browse categories and search products.
+                  </DrawerDescription>
+                </DrawerHeader>
+
+                <nav className="mt-4 flex flex-col gap-1">
+                  {links.map((link) => (
+                    <DrawerClose key={link.link} asChild>
+                      <Link
+                        to={link.link}
+                        className="rounded-lg px-2 py-3 text-base font-medium text-black transition-colors hover:bg-[#f0f0f0]"
+                      >
+                        {link.title}
+                      </Link>
+                    </DrawerClose>
+                  ))}
+                </nav>
+
+                <div className="mt-5">
+                  <Input
+                    className="h-12 bg-[#F0F0F0] text-gray-500"
+                    placeholder="Search for products.."
+                    icon={<Search className="text-gray-500" size={19} />}
+                  />
+                </div>
+              </DrawerContent>
+            </Drawer>
 
             <Link to={"/"} onClick={() => setIsMenuOpen(false)}>
               <h1 className="font-inter text-2xl font-bold sm:text-3xl">
@@ -96,27 +136,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {isMenuOpen && (
-          <div className="border-t border-black/10 px-4 pb-5 sm:px-8 lg:hidden">
-            <nav className="flex flex-col gap-1 py-4">
-              {links.map((link) => (
-                <Link
-                  key={link.link}
-                  to={link.link}
-                  className="rounded-lg px-2 py-3 text-base font-medium transition-colors hover:bg-[#f0f0f0]"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </nav>
-            <Input
-              className="h-12 bg-[#F0F0F0] text-gray-500"
-              placeholder="Search for products.."
-              icon={<Search className="text-gray-500" size={19} />}
-            />
-          </div>
-        )}
       </header>
     </div>
   );
