@@ -10,7 +10,7 @@ const HeroNumbers = () => {
       setter: React.Dispatch<React.SetStateAction<number>>,
       endValue: number,
       duration: number,
-      increment: number
+      increment: number,
     ) => {
       let startValue = 0;
       const timer = setInterval(() => {
@@ -36,21 +36,27 @@ const HeroNumbers = () => {
     };
   }, []);
   return (
-    <div className="flex flex-row gap-8 flex-wrap">
+    <div className="flex items-center justify-center flex-row gap-4 lg:gap-8 px-12.75 lg:px-0 flex-wrap">
       <div>
-        <p className="font-bold text-[40px] text-black">{brands}+</p>
-        <p className="text-gray-500 text-light">International Brands</p>
+        <p className="font-bold text-[24px] lg:text-[40px] text-black max-sm:text-center">
+          {brands}+
+        </p>
+        <p className="text-gray-500 text-[12px] lg:text-base text-light">
+          International Brands
+        </p>
       </div>
       <div className="w-px bg-gray-300 self-stretch"></div>
       <div>
-        <p className="font-bold text-[40px] text-black">
+        <p className="font-bold text-[24px] lg:text-[40px] text-black max-sm:text-center">
           {products.toLocaleString()}+
         </p>
-        <p className="text-gray-500 text-light">High-Quality Products</p>
+        <p className="text-gray-500 text-[12px] lg:text-base text-light">
+          High-Quality Products
+        </p>
       </div>
       <div className="w-px bg-gray-300 self-stretch"></div>
       <div>
-        <p className="font-bold text-[40px] text-black">
+        <p className="font-bold text-[24px] lg:text-[40px] text-black max-sm:text-center">
           {customers.toLocaleString()}+
         </p>
         <p className="text-gray-500 text-light">Happy customer</p>
