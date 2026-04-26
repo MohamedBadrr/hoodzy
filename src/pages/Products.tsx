@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { SlidersHorizontal, Star } from "lucide-react";
+import { SlidersHorizontal } from "lucide-react";
 import Navbar from "../features/header/Navbar";
 import { Button } from "../components/ui/button";
+import StarRating from "../features/products/components/StarRating";
 
 const mockProducts = [
   { id: 1, name: "Classic Black T-Shirt", price: 29.99, rating: 4.5, category: "T-Shirts", image: "" },
@@ -96,22 +97,11 @@ const Products = () => {
                     <h3 className="font-semibold text-base group-hover:underline">
                       {product.name}
                     </h3>
-                    <div className="flex items-center gap-1 mt-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          size={14}
-                          className={
-                            i < Math.floor(product.rating)
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-gray-300"
-                          }
-                        />
-                      ))}
-                      <span className="text-sm text-gray-500 ml-1">
-                        {product.rating}/5
-                      </span>
-                    </div>
+                    <StarRating
+                      rating={product.rating}
+                      className="mt-1"
+                      labelClassName="text-sm text-gray-500"
+                    />
                     <div className="flex items-center justify-between mt-3">
                       <span className="font-bold text-xl">${product.price}</span>
                       <Button
