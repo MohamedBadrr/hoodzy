@@ -1,4 +1,4 @@
-import Autoplay from "embla-carousel-autoplay";
+import AutoScroll from "embla-carousel-auto-scroll";
 import {
   Carousel,
   CarouselContent,
@@ -31,10 +31,10 @@ export default function Brands() {
           align: "start",
         }}
         plugins={[
-          Autoplay({
-            delay: 1200,
+          AutoScroll({
             stopOnMouseEnter: true,
             stopOnInteraction: false,
+            speed: 1.2,
           }),
         ]}
       >
