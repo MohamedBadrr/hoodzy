@@ -1,45 +1,60 @@
-"use client";
-
-import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "../../../components/ui/carousel";
-// import { Card, CardContent } from "@/components/ui/card"
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay";
 
-export function Brands() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 1000 , jump:false , })
-  );
+import cilven from "../../../assets/images/cilven.png";
+import gucci from "../../../assets/images/gucci.png";
+import parada from "../../../assets/images/parada.png";
+import verse from "../../../assets/images/verse.png";
+import zara from "../../../assets/images/zara.png";
+
+const brands = [
+  { name: "verse", logo: verse },
+  { name: "gucci", logo: gucci },
+  { name: "parada", logo: parada },
+  { name: "zara", logo: zara },
+  { name: "calvin klein", logo: cilven },
+];
+
+export default function Brands() {
+  const repeatedBrands = [...brands, ...brands, ...brands];
 
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full bg-red-500"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-    >
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <div>dasdaf</div>
-             
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      {/* <CarouselPrevious /> */}
-      {/* <CarouselNext /> */}
-    </Carousel>
+    <section className="w-full overflow-hidden bg-black py-6">
+      <Carousel
+        className="w-full"
+        opts={{
+          loop: true,
+          align: "start",
+        }}
+        plugins={[
+          Autoplay({
+            delay: 1200,
+            stopOnMouseEnter: true,
+            stopOnInteraction: false,
+          }),
+        ]}
+      >
+        <CarouselContent className="items-center">
+          {repeatedBrands.map((brand, index) => (
+            <CarouselItem
+              key={index}
+              className="basis-1/2 sm:basis-1/3 md:basis-1/5 lg:basis-1/5"
+            >
+              <div className="flex h-14 items-center justify-center px-6">
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="h-8 w-auto object-contain md:h-10"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </section>
   );
 }
