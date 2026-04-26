@@ -43,7 +43,9 @@ export default function ProductInfo({
 }: ProductInfoProps) {
   return (
     <div className="flex flex-1 flex-col gap-3">
-      <h1 className="font-inter text-3xl font-bold">{product.name}</h1>
+      <h1 className="font-inter text-2xl lg:text-3xl font-bold">
+        {product.name}
+      </h1>
 
       <StarRating
         rating={product.rating}

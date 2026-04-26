@@ -2,10 +2,12 @@ type ProductGalleryProps = {
   imageCount?: number;
 };
 
-export default function ProductGallery({ imageCount = 3 }: ProductGalleryProps) {
+export default function ProductGallery({
+  imageCount = 3,
+}: ProductGalleryProps) {
   return (
-    <div className="flex flex-1 gap-4">
-      <div className="flex flex-col gap-3">
+    <div className="flex flex-col-reverse md:flex-row flex-1 gap-4">
+      <div className="flex  flex-row lg:flex-col gap-3">
         {Array.from({ length: imageCount }).map((_, index) => (
           <button
             key={index}

@@ -4,6 +4,7 @@ export type Review = {
   rating: number;
   verified?: boolean;
   quote: string;
+  date?: string;
 };
 
 export const customerReviews: Review[] = [
@@ -14,6 +15,7 @@ export const customerReviews: Review[] = [
     verified: true,
     quote:
       "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.",
+    date: "Posted on August 14, 2023",
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ export const customerReviews: Review[] = [
     verified: true,
     quote:
       "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable.",
+    date: "Posted on August 15, 2023",
   },
   {
     id: 3,
@@ -30,6 +33,7 @@ export const customerReviews: Review[] = [
     verified: true,
     quote:
       "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection is both on-point and diverse.",
+    date: "Posted on August 16, 2023",
   },
   {
     id: 4,
@@ -38,6 +42,7 @@ export const customerReviews: Review[] = [
     verified: true,
     quote:
       "The site makes shopping simple, and every order has arrived looking just like the photos. It has quickly become my go-to store.",
+    date: "Posted on August 17, 2023",
   },
   {
     id: 5,
@@ -46,5 +51,6 @@ export const customerReviews: Review[] = [
     verified: true,
     quote:
       "Great fabrics, clean fits, and fast delivery. I like that the collection covers everyday outfits and sharper looks in one place.",
+    date: "Posted on August 18, 2023",
   },
 ];
