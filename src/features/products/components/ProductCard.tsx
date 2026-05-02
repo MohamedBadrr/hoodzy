@@ -19,7 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="mt-3 space-y-1.5">
-          <h3 className="text-sm font-bold leading-tight text-black group-hover:underline">
+          <h3 className="truncate text-sm font-bold leading-tight text-black group-hover:underline">
             {product.name}
           </h3>
           <StarRating rating={product.rating} />
