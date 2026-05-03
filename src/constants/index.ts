@@ -16,3 +16,10 @@
       title: "Brands",
     },
   ];
+export const routeLabels: Record<string, string> = {
+  "/products": "Products",
+  "/shop": "Shop",
+  "/sale": "On Sale",
+  "/new": "New Arrivals",
+  "/brands": "Brands",
+};

@@ -6,6 +6,7 @@ import paypal from "../../../assets/images/paypal.png";
 import gpay from "../../../assets/images/gpay.png";
 import visa from "../../../assets/images/visa.png";
 import goPay from "../../../assets/images/goPay.png";
+import { useAuthStore } from "../../../store/authStore";
 
 const socialLinks = [
   { label: "Twitter", icon: Twitter },
@@ -23,9 +24,12 @@ const payments = [
 ];
 
 export default function SiteFooter() {
+  const { isAuthenticated } = useAuthStore();
   return (
-    <footer className="mt-32 px-4 pb-8 pt-0 sm:mt-28 sm:px-8 md:mt-24 lg:mt-26 lg:px-25">
-      <NewsletterSignup />
+    <footer
+      className={`mt-32 px-4 pb-8 ${!isAuthenticated ? "border-t" : ""} pt-0 sm:mt-28 sm:px-8 md:mt-24 lg:mt-26 lg:px-25`}
+    >
+      {isAuthenticated && <NewsletterSignup />}
       <div className="mx-auto max-w-310  ">
         <div className="pt-10 lg:hidden">
           <h2 className="font-inter text-3xl font-bold text-black">SHOP.CO</h2>

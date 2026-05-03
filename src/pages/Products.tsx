@@ -6,31 +6,37 @@ import ProductFilters from "../features/products/components/ProductFilters";
 import ProductGrid from "../features/products/components/ProductGrid";
 import ProductPagination from "../features/products/components/ProductPagination";
 import { catalogProducts } from "../constants/products";
-
-const routeLabels: Record<string, string> = {
-  "/products": "Products",
-  "/shop": "Shop",
-  "/sale": "On Sale",
-  "/new": "New Arrivals",
-  "/brands": "Brands",
-};
+import { routeLabels } from "../constants";
 
 const Products = () => {
   const { pathname } = useLocation();
   const pageLabel = routeLabels[pathname] ?? "Products";
   const [searchParams] = useSearchParams();
   const searchTerm = searchParams.get("search")?.trim() ?? "";
+  const category = searchParams.get("category");
+  const minPrice = Number(searchParams.get("minPrice")) || 0;
+  const maxPrice = Number(searchParams.get("maxPrice")) || 500;
   const normalizedSearchTerm = searchTerm.toLowerCase();
   const filteredProducts = useMemo(() => {
-    if (!normalizedSearchTerm) return catalogProducts;
+    const normalizedCategory = category?.toLowerCase();
 
-    return catalogProducts.filter((product) =>
-      [product.name, product.category]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalizedSearchTerm),
-    );
-  }, [normalizedSearchTerm]);
+    return catalogProducts.filter((product) => {
+      const matchesSearch =
+        !normalizedSearchTerm ||
+        [product.name, product.category]
+          .join(" ")
+          .toLowerCase()
+          .includes(normalizedSearchTerm);
+
+      const matchesCategory =
+        !normalizedCategory ||
+        product.category.toLowerCase() === normalizedCategory;
+      const matchesPrice =
+        product.price >= minPrice && product.price <= maxPrice;
+
+      return matchesSearch && matchesCategory && matchesPrice;
+    });
+  }, [normalizedSearchTerm, category, minPrice, maxPrice]);
   const title = searchTerm ? `Search results for "${searchTerm}"` : pageLabel;
 
   return (

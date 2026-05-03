@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 const UpperHeader = () => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -13,9 +14,11 @@ const UpperHeader = () => {
           <p className="text-white text-sm text-center">
             Sign up and get 20% off to your first order.
           </p>
-          <p className="text-white text-sm underline text-center cursor-pointer hover:scale-105">
-            Sign Up Now
-          </p>
+          <Link to="/register">
+            <p className="text-white text-sm underline text-center cursor-pointer hover:scale-105">
+              Sign Up Now
+            </p>
+          </Link>
         </div>
         <X
           onClick={() => {

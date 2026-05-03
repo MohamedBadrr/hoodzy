@@ -35,7 +35,7 @@ export default function Sale() {
           {repeatedBrands.map((brand, index) => (
             <CarouselItem
               key={index}
-              className="basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/3"
+              className="basis-1/1 sm:basis-1/1 md:basis-1/2 lg:basis-1/2 xl:basis-1/3"
             >
               <div className="flex  items-center justify-start ">
                 <p className="text-white">{brand}</p>

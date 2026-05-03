@@ -19,13 +19,8 @@ const Login = () => {
   );
 
   return (
-    <div className="min-h-screen   ">
-      <main className="mx-auto max-w-310 px-4 py-8 sm:px-8 lg:px-0">
-        {/* <BreadcrumbTrail
-          className="mb-8"
-          items={[{ label: "Home", to: "/" }, { label: "Login" }]}
-        /> */}
-
+    <div className=" ">
+      <main className="mx-auto max-w-310 px-4 py-8 sm:px-8 lg:px-0 ">
         <section className="mx-auto flex max-w-md flex-col gap-7">
           <div className="text-center">
             <h1 className="font-inter text-4xl font-bold text-black">LOGIN</h1>

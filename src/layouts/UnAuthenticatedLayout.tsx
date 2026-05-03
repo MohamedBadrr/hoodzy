@@ -1,5 +1,6 @@
 import { Navigate, Outlet, ScrollRestoration } from "react-router";
 import Navbar from "../features/header/Navbar";
+import SiteFooter from "../features/footer/components/SiteFooter";
 
 const UnAuthenticatedLayout = () => {
   const token = localStorage.getItem("token");
@@ -9,6 +10,7 @@ const UnAuthenticatedLayout = () => {
       <ScrollRestoration />
       <Navbar />
       <Outlet />
+      <SiteFooter />
     </div>
   );
 };

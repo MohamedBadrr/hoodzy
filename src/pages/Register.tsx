@@ -2,7 +2,6 @@ import { Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import InputField from "../components/fields/InputField";
-import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import { Button } from "../components/ui/button";
 import { registerSchema } from "../features/auth/schemas";
 import type { RegisterFormValues } from "../features/auth/types";
@@ -22,12 +21,7 @@ const Register = () => {
 
   return (
     <div>
-      <main className="mx-auto max-w-310 px-4 py-8 sm:px-8 lg:px-0">
-        <BreadcrumbTrail
-          className="mb-8"
-          items={[{ label: "Home", to: "/" }, { label: "Register" }]}
-        />
-
+      <main className="mx-auto max-w-310 px-4 py-8 sm:px-8 lg:px-0 ">
         <section className="mx-auto flex max-w-2xl flex-col gap-7">
           <div className="text-center">
             <h1 className="font-inter text-4xl font-bold text-black">
