@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import ProductCatalogHeader from "../features/products/components/ProductCatalogHeader";
 import ProductFilters from "../features/products/components/ProductFilters";
@@ -5,13 +6,24 @@ import ProductGrid from "../features/products/components/ProductGrid";
 import ProductPagination from "../features/products/components/ProductPagination";
 import { catalogProducts } from "../features/products/data/products";
 
+const routeLabels: Record<string, string> = {
+  "/products": "Products",
+  "/shop": "Shop",
+  "/sale": "On Sale",
+  "/new": "New Arrivals",
+  "/brands": "Brands",
+};
+
 const Products = () => {
+  const { pathname } = useLocation();
+  const pageLabel = routeLabels[pathname] ?? "Products";
+
   return (
     <div>
       <main className="mx-auto max-w-310 px-4 py-6 sm:px-8 lg:px-0">
         <BreadcrumbTrail
           className="mb-5"
-          items={[{ label: "Home", to: "/" }, { label: "Casual" }]}
+          items={[{ label: "Home", to: "/" }, { label: pageLabel }]}
         />
 
         <div className="grid gap-6 lg:grid-cols-[295px_1fr]">
@@ -21,7 +33,7 @@ const Products = () => {
 
           <section>
             <ProductCatalogHeader
-              title="Casual"
+              title={pageLabel}
               total={catalogProducts.length * 11}
             />
             <ProductGrid products={catalogProducts} />

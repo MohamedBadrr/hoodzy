@@ -4,15 +4,15 @@
       title: "Shop",
     },
     {
-      link: "/shop",
+      link: "/sale",
       title: "On Sale",
     },
     {
-      link: "/shop",
+      link: "/new",
       title: "New Arrivals",
     },
     {
-      link: "/shop",
+      link: "/brands",
       title: "Brands",
     },
   ];
