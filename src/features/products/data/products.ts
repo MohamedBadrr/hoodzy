@@ -12,6 +12,7 @@ export type Product = {
   rating: number;
   image: string;
   category: string;
+  sizes?: string[];
   images?: {
     name: string;
     src: string;
@@ -28,6 +29,7 @@ export const catalogProducts: Product[] = [
     rating: 3.5,
     image: tShirt,
     category: "T-shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -52,6 +54,7 @@ export const catalogProducts: Product[] = [
     rating: 4.5,
     image: blackShirt,
     category: "T-shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -76,6 +79,7 @@ export const catalogProducts: Product[] = [
     rating: 5,
     image: blackShirt,
     category: "T-shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -100,6 +104,7 @@ export const catalogProducts: Product[] = [
     rating: 3.5,
     image: jeans,
     category: "Jeans",
+    sizes: ["28", "30", "32", "34", "36"],
         images: [
       {
         name:"image1",
@@ -122,6 +127,7 @@ export const catalogProducts: Product[] = [
     rating: 4.5,
     image: shirt,
     category: "Shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -146,6 +152,7 @@ export const catalogProducts: Product[] = [
     rating: 4.5,
     image: tShirt,
     category: "T-shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -170,6 +177,7 @@ export const catalogProducts: Product[] = [
     rating: 5,
     image: shirt,
     category: "Shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -192,6 +200,7 @@ export const catalogProducts: Product[] = [
     rating: 4,
     image: tShirt,
     category: "T-shirts",
+    sizes: ["Small", "Medium", "Large", "X-Large"],
         images: [
       {
         name:"image1",
@@ -214,6 +223,7 @@ export const catalogProducts: Product[] = [
     rating: 3,
     image: jeans,
     category: "Shorts",
+    sizes: ["28", "30", "32", "34", "36"],
         images: [
       {
         name:"image1",

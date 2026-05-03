@@ -1,39 +1,19 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router";
-import { Button } from "../components/ui/button";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
+import { Button } from "../components/ui/button";
 import CartItemsList from "../features/cart/components/CartItemsList";
 import OrderSummary from "../features/cart/components/OrderSummary";
-import {
-  initialCartItems,
-  type CartItem,
-} from "../features/cart/data/cartItems";
-
-const discountRate = 0.2;
-const deliveryFee = 15;
+import { calculateCartTotals, useCartStore } from "../store/cartStore";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
-
-  const updateQuantity = (id: number, quantity: number) => {
-    setCartItems((items) =>
-      items.map((item) => (item.id === id ? { ...item, quantity } : item)),
-    );
-  };
-
-  const removeItem = (id: number) => {
-    setCartItems((items) => items.filter((item) => item.id !== id));
-  };
-
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  const discount = Math.round(subtotal * discountRate);
-  const total = subtotal - discount + deliveryFee;
+  const cartItems = useCartStore((state) => state.items);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
+  const removeItem = useCartStore((state) => state.removeItem);
+  const totals = useMemo(() => calculateCartTotals(cartItems), [cartItems]);
 
   return (
-    <div>
+    <div className="min-h-screen  pb-25">
       <main className="mx-auto max-w-310 px-4 py-8 sm:px-8 lg:px-0">
         <BreadcrumbTrail
           className="mb-6"
@@ -59,10 +39,10 @@ const Cart = () => {
               onRemove={removeItem}
             />
             <OrderSummary
-              subtotal={subtotal}
-              discount={discount}
-              deliveryFee={deliveryFee}
-              total={total}
+              subtotal={totals.subtotal}
+              discount={totals.discount}
+              deliveryFee={totals.deliveryFee}
+              total={totals.total}
             />
           </div>
         )}

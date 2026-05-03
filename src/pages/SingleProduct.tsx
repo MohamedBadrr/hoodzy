@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useParams } from "react-router";
+import { toast } from "sonner";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import ProductGallery from "../features/singleProduct/components/ProductGallery";
 import ProductInfo from "../features/singleProduct/components/ProductInfo";
 import ProductTabs from "../features/singleProduct/components/ProductTabs";
 import { catalogProducts } from "../features/products/data/products";
+import { useCartStore } from "../store/cartStore";
+
+const defaultSizes = ["Small", "Medium", "Large", "X-Large"];
 
 const mockProducts = [
   {
@@ -117,7 +121,6 @@ const mockProducts = [
   },
 ];
 
-const sizes = ["Small", "Medium", "Large", "X-Large"];
 const colors = [
   { name: "Black", value: "#000000" },
   { name: "White", value: "#FFFFFF" },
@@ -130,9 +133,14 @@ const SingleProduct = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("Medium");
   const [selectedColor, setSelectedColor] = useState("Black");
+  const addItem = useCartStore((state) => state.addItem);
 
   const product =
     catalogProducts.find((p) => p.id === Number(id)) ?? catalogProducts[0];
+  const productSizes = product.sizes ?? defaultSizes;
+  const activeSelectedSize = productSizes.includes(selectedSize)
+    ? selectedSize
+    : (productSizes[0] ?? "Medium");
   const productDetails = {
     ...product,
     description:
@@ -140,8 +148,24 @@ const SingleProduct = () => {
       `A premium ${product.category.toLowerCase()} piece designed for everyday comfort and easy styling.`,
   };
 
+  const handleAddToCart = () => {
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      size: activeSelectedSize,
+      color: selectedColor,
+      quantity,
+      image: product.image,
+    });
+
+    toast.success("Added to cart", {
+      description: `${quantity}x ${product.name} (${activeSelectedSize}, ${selectedColor})`,
+    });
+  };
+
   return (
-    <div>
+    <div className="min-h-screen  pb-25">
       <div className="mx-4 my-5 lg:mx-25 lg:my-10">
         <BreadcrumbTrail
           className="mb-8"
@@ -162,18 +186,14 @@ const SingleProduct = () => {
           <ProductInfo
             product={productDetails}
             colors={colors}
-            sizes={sizes}
+            sizes={productSizes}
             selectedColor={selectedColor}
-            selectedSize={selectedSize}
+            selectedSize={activeSelectedSize}
             quantity={quantity}
             onColorChange={setSelectedColor}
             onSizeChange={setSelectedSize}
             onQuantityChange={setQuantity}
-            onAddToCart={() =>
-              alert(
-                `Added ${quantity}x "${product.name}" (${selectedSize}, ${selectedColor}) to cart`,
-              )
-            }
+            onAddToCart={handleAddToCart}
           />
         </div>
 

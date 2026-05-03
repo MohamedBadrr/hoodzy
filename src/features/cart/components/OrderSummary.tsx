@@ -16,7 +16,7 @@ export default function OrderSummary({
   total,
 }: OrderSummaryProps) {
   return (
-    <aside className="rounded-[20px] border border-black/10 p-6">
+    <aside className="rounded-[20px] w-full lg:w-1/2 border border-black/10 p-6">
       <h2 className="text-xl font-bold text-black">Order Summary</h2>
 
       <div className="mt-6 space-y-5">

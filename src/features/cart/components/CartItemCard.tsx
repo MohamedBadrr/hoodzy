@@ -1,11 +1,11 @@
 import { Trash2 } from "lucide-react";
 import QuantitySelector from "../../singleProduct/components/QuantitySelector";
-import type { CartItem } from "../data/cartItems";
+import type { CartItem } from "../../../store/cartStore";
 
 type CartItemCardProps = {
   item: CartItem;
-  onQuantityChange: (id: number, quantity: number) => void;
-  onRemove: (id: number) => void;
+  onQuantityChange: (id: string, quantity: number) => void;
+  onRemove: (id: string) => void;
 };
 
 export default function CartItemCard({
@@ -15,7 +15,7 @@ export default function CartItemCard({
 }: CartItemCardProps) {
   return (
     <article className="flex gap-4 py-5 first:pt-0 last:pb-0">
-      <div className="flex size-31 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#F0F0F0] sm:size-28">
+      <div className="flex size-31 flex-wrap shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#F0F0F0] sm:size-28">
         <img
           src={item.image}
           alt={item.name}
@@ -47,7 +47,7 @@ export default function CartItemCard({
           </button>
         </div>
 
-        <div className="mt-4 flex items-end justify-between gap-3">
+        <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
           <span className="text-2xl font-bold text-black">${item.price}</span>
           <QuantitySelector
             quantity={item.quantity}
