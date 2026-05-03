@@ -15,7 +15,7 @@ const Products = () => {
         />
 
         <div className="grid gap-6 lg:grid-cols-[295px_1fr]">
-          <aside className="hidden rounded-[20px] border border-black/10 p-6 lg:block">
+          <aside className="hidden h-fit rounded-[20px] border border-black/10 p-6 lg:block">
             <ProductFilters />
           </aside>
 

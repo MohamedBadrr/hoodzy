@@ -25,7 +25,6 @@ const sizes = [
   "3X-Large",
   "4X-Large",
 ];
-const dressStyles = ["Casual", "Formal", "Party", "Gym"];
 
 export default function ProductFilters() {
   return (
@@ -87,22 +86,6 @@ export default function ProductFilters() {
               className="rounded-full bg-[#F0F0F0] px-5 py-2.5 text-sm text-black/60 transition-colors hover:bg-black hover:text-white"
             >
               {size}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-t border-black/10 pt-5">
-        <h3 className="text-base font-bold text-black">Dress Style</h3>
-        <div className="mt-3">
-          {dressStyles.map((style) => (
-            <button
-              key={style}
-              type="button"
-              className="flex w-full items-center justify-between py-2 text-left text-sm text-black/60 transition-colors hover:text-black"
-            >
-              {style}
-              <ChevronRight className="size-4" />
             </button>
           ))}
         </div>

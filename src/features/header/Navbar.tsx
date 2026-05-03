@@ -20,6 +20,7 @@ import {
   DrawerTrigger,
 } from "../../components/ui/drawer";
 import { useAuthStore } from "../../store/authStore";
+import { links } from "../../constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,24 +34,6 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  const links = [
-    {
-      link: "/shop",
-      title: "Shop",
-    },
-    {
-      link: "/sale",
-      title: "On Sale",
-    },
-    {
-      link: "/new",
-      title: "New Arrivals",
-    },
-    {
-      link: "/brands",
-      title: "Brands",
-    },
-  ];
   return (
     <div className="flex items-center justify-center flex-col w-full">
       <UpperHeader />

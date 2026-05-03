@@ -12,6 +12,10 @@ export type Product = {
   rating: number;
   image: string;
   category: string;
+  images?: {
+    name: string;
+    src: string;
+  }[];
 };
 
 export const catalogProducts: Product[] = [
@@ -24,6 +28,20 @@ export const catalogProducts: Product[] = [
     rating: 3.5,
     image: tShirt,
     category: "T-shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 2,
@@ -34,6 +52,20 @@ export const catalogProducts: Product[] = [
     rating: 4.5,
     image: blackShirt,
     category: "T-shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 3,
@@ -44,6 +76,20 @@ export const catalogProducts: Product[] = [
     rating: 5,
     image: blackShirt,
     category: "T-shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 4,
@@ -54,6 +100,20 @@ export const catalogProducts: Product[] = [
     rating: 3.5,
     image: jeans,
     category: "Jeans",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 5,
@@ -62,6 +122,20 @@ export const catalogProducts: Product[] = [
     rating: 4.5,
     image: shirt,
     category: "Shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 6,
@@ -72,6 +146,20 @@ export const catalogProducts: Product[] = [
     rating: 4.5,
     image: tShirt,
     category: "T-shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 7,
@@ -82,6 +170,20 @@ export const catalogProducts: Product[] = [
     rating: 5,
     image: shirt,
     category: "Shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 8,
@@ -90,6 +192,20 @@ export const catalogProducts: Product[] = [
     rating: 4,
     image: tShirt,
     category: "T-shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 9,
@@ -98,6 +214,20 @@ export const catalogProducts: Product[] = [
     rating: 3,
     image: jeans,
     category: "Shorts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
 ];
 
@@ -109,6 +239,20 @@ export const newArrivalProducts: Product[] = [
     rating: 4.5,
     image: blackShirt,
     category: "T-Shirts",
+    images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 2,
@@ -119,6 +263,20 @@ export const newArrivalProducts: Product[] = [
     rating: 3.5,
     image: jeans,
     category: "Jeans",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 3,
@@ -127,6 +285,20 @@ export const newArrivalProducts: Product[] = [
     rating: 4.5,
     image: shirt,
     category: "Shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
   {
     id: 4,
@@ -137,5 +309,19 @@ export const newArrivalProducts: Product[] = [
     rating: 4.5,
     image: tShirt,
     category: "T-Shirts",
+        images: [
+      {
+        name:"image1",
+        src:blackShirt
+      },
+      {
+        name:"image2",
+        src:shirt
+      },
+      {
+        name:"image3",
+        src:shirt
+      },
+   ],
   },
 ];

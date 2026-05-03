@@ -4,6 +4,7 @@ import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import ProductGallery from "../features/singleProduct/components/ProductGallery";
 import ProductInfo from "../features/singleProduct/components/ProductInfo";
 import ProductTabs from "../features/singleProduct/components/ProductTabs";
+import { catalogProducts } from "../features/products/data/products";
 
 const mockProducts = [
   {
@@ -131,7 +132,13 @@ const SingleProduct = () => {
   const [selectedColor, setSelectedColor] = useState("Black");
 
   const product =
-    mockProducts.find((p) => p.id === Number(id)) || mockProducts[0];
+    catalogProducts.find((p) => p.id === Number(id)) ?? catalogProducts[0];
+  const productDetails = {
+    ...product,
+    description:
+      mockProducts.find((p) => p.id === product.id)?.description ??
+      `A premium ${product.category.toLowerCase()} piece designed for everyday comfort and easy styling.`,
+  };
 
   return (
     <div>
@@ -146,10 +153,14 @@ const SingleProduct = () => {
         />
 
         <div className="flex gap-10 flex-col lg:flex-row">
-          <ProductGallery />
+          <ProductGallery
+            baseImage={product.image}
+            baseImageAlt={product.name}
+            productImages={product.images || []}
+          />
 
           <ProductInfo
-            product={product}
+            product={productDetails}
             colors={colors}
             sizes={sizes}
             selectedColor={selectedColor}
