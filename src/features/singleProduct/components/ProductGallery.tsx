@@ -76,7 +76,7 @@ export default function ProductGallery({
                   src={image.src}
                   alt={image.name}
                   onError={() => handleImageError(index)}
-                  className="h-full w-full object-contain p-2"
+                  className="h-full w-full object-contain p-1.5"
                 />
               ) : (
                 <span className="text-[10px] text-gray-400">
@@ -98,7 +98,7 @@ export default function ProductGallery({
                 handleImageError(selectedImageIndex);
               }
             }}
-            className="h-full w-full object-contain p-8"
+            className="h-full w-full object-contain p-5 sm:p-7"
           />
         ) : (
           <span className="text-gray-400">Product Image</span>

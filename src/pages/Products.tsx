@@ -4,7 +4,7 @@ import ProductCatalogHeader from "../features/products/components/ProductCatalog
 import ProductFilters from "../features/products/components/ProductFilters";
 import ProductGrid from "../features/products/components/ProductGrid";
 import ProductPagination from "../features/products/components/ProductPagination";
-import { catalogProducts } from "../features/products/data/products";
+import { catalogProducts } from "../constants/products";
 
 const routeLabels: Record<string, string> = {
   "/products": "Products",
