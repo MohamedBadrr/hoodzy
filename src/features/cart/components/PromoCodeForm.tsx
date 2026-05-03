@@ -28,7 +28,10 @@ export default function PromoCodeForm() {
   };
 
   return (
-    <form className="mt-5 flex flex-col gap-3 sm:flex-row" onSubmit={handleSubmit}>
+    <form
+      className="mt-5 flex flex-col gap-3 sm:flex-row"
+      onSubmit={handleSubmit}
+    >
       <label className="relative flex min-w-0 flex-1 items-center">
         <span className="sr-only">Promo code</span>
         <Tag className="absolute left-4 size-4 text-black/40" />
@@ -51,7 +54,11 @@ export default function PromoCodeForm() {
           Remove
         </Button>
       ) : (
-        <Button type="submit" className="h-10 px-7 py-0">
+        <Button
+          type="submit"
+          disabled={!code.trim()}
+          className="h-10 px-7 py-0"
+        >
           Apply
         </Button>
       )}
