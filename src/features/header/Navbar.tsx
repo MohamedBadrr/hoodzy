@@ -1,13 +1,15 @@
 import { useState } from "react";
 import {
   CircleUserRound,
+  LogOut,
   Menu,
   Search,
   ShoppingCartIcon,
 } from "lucide-react";
 import UpperHeader from "./UpperHeader";
 import { Input } from "../../components/ui/input";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 import {
   Drawer,
   DrawerClose,
@@ -17,9 +19,19 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../../components/ui/drawer";
+import { useAuthStore } from "../../store/authStore";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const logout = useAuthStore((state) => state.logout);
+
+  const handleLogout = () => {
+    logout();
+    toast.success("Logged out successfully");
+    navigate("/login");
+  };
 
   const links = [
     {
@@ -45,7 +57,11 @@ const Navbar = () => {
       <header className="border-b border-black/10 bg-white w-full">
         <div className="mx-auto flex max-w-310 items-center justify-between gap-4 px-4 py-5 sm:px-8 lg:px-10 xl:px-0">
           <div className="flex items-center gap-4">
-            <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen} direction="left">
+            <Drawer
+              open={isMenuOpen}
+              onOpenChange={setIsMenuOpen}
+              direction="left"
+            >
               <DrawerTrigger asChild>
                 <button
                   type="button"
@@ -130,12 +146,23 @@ const Navbar = () => {
                 className="cursor-pointer transition-all duration-200 hover:scale-115"
               />
             </Link>
-            <Link to="/login" aria-label="User account">
-              <CircleUserRound className="cursor-pointer transition-all duration-200 hover:scale-115" />
-            </Link>
+            {isAuthenticated ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="cursor-pointer inline-flex size-6 items-center justify-center transition-all duration-200 hover:scale-115"
+                aria-label="Logout"
+                title="Logout"
+              >
+                <LogOut size={24} />
+              </button>
+            ) : (
+              <Link to="/login" aria-label="User account">
+                <CircleUserRound className="cursor-pointer transition-all duration-200 hover:scale-115" />
+              </Link>
+            )}
           </div>
         </div>
-
       </header>
     </div>
   );
