@@ -3,6 +3,8 @@ import { persist } from "zustand/middleware";
 
 const DISCOUNT_RATE = 0.2;
 const DELIVERY_FEE = 15;
+export const PROMO_CODE = "HOODZY10";
+const PROMO_DISCOUNT_RATE = 0.1;
 
 export type CartItem = {
   id: string;
@@ -22,6 +24,7 @@ export type AddCartItemInput = Omit<CartItem, "id" | "quantity"> & {
 type CartTotals = {
   subtotal: number;
   discount: number;
+  promoDiscount: number;
   deliveryFee: number;
   total: number;
   itemCount: number;
@@ -29,9 +32,12 @@ type CartTotals = {
 
 type CartState = {
   items: CartItem[];
+  promoCode: string | null;
   addItem: (item: AddCartItemInput) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
+  applyPromoCode: (code: string) => boolean;
+  removePromoCode: () => void;
   clearCart: () => void;
   getTotals: () => CartTotals;
 };
@@ -39,18 +45,24 @@ type CartState = {
 const createCartItemId = (item: AddCartItemInput) =>
   `${item.productId}-${item.size.toLowerCase()}-${item.color.toLowerCase()}`;
 
-export const calculateCartTotals = (items: CartItem[]): CartTotals => {
+export const calculateCartTotals = (
+  items: CartItem[],
+  promoCode: string | null = null,
+): CartTotals => {
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
   const discount = Math.round(subtotal * DISCOUNT_RATE);
-  const total = subtotal - discount + DELIVERY_FEE;
+  const promoDiscount =
+    promoCode === PROMO_CODE ? Math.round((subtotal - discount) * PROMO_DISCOUNT_RATE) : 0;
+  const total = subtotal - discount - promoDiscount + DELIVERY_FEE;
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return {
     subtotal,
     discount,
+    promoDiscount,
     deliveryFee: DELIVERY_FEE,
     total,
     itemCount,
@@ -61,6 +73,7 @@ export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+      promoCode: null,
       addItem: (item) => {
         const id = createCartItemId(item);
         const quantity = Math.max(1, item.quantity ?? 1);
@@ -100,10 +113,23 @@ export const useCartStore = create<CartState>()(
           ),
         });
       },
-      clearCart: () => {
-        set({ items: [] });
+      applyPromoCode: (code) => {
+        const normalizedCode = code.trim().toUpperCase();
+
+        if (normalizedCode !== PROMO_CODE) {
+          return false;
+        }
+
+        set({ promoCode: PROMO_CODE });
+        return true;
       },
-      getTotals: () => calculateCartTotals(get().items),
+      removePromoCode: () => {
+        set({ promoCode: null });
+      },
+      clearCart: () => {
+        set({ items: [], promoCode: null });
+      },
+      getTotals: () => calculateCartTotals(get().items, get().promoCode),
     }),
     {
       name: "cart",

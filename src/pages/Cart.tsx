@@ -8,9 +8,13 @@ import { calculateCartTotals, useCartStore } from "../store/cartStore";
 
 const Cart = () => {
   const cartItems = useCartStore((state) => state.items);
+  const promoCode = useCartStore((state) => state.promoCode);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const removeItem = useCartStore((state) => state.removeItem);
-  const totals = useMemo(() => calculateCartTotals(cartItems), [cartItems]);
+  const totals = useMemo(
+    () => calculateCartTotals(cartItems, promoCode),
+    [cartItems, promoCode],
+  );
 
   return (
     <div className="min-h-screen  pb-25">
@@ -41,6 +45,7 @@ const Cart = () => {
             <OrderSummary
               subtotal={totals.subtotal}
               discount={totals.discount}
+              promoDiscount={totals.promoDiscount}
               deliveryFee={totals.deliveryFee}
               total={totals.total}
             />

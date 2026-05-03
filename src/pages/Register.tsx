@@ -52,9 +52,7 @@ const Register = () => {
                 return;
               }
 
-              toast.success("Account created", {
-                description: `Welcome, ${result.user?.name ?? values.firstName}.`,
-              });
+              toast.success("Account created successfully");
               helpers.setSubmitting(false);
               navigate("/");
             }}
