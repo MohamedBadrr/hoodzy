@@ -21,6 +21,7 @@ import {
 } from "../../components/ui/drawer";
 import { useAuthStore } from "../../store/authStore";
 import { links } from "../../constants";
+import Sale from "./Sale";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,6 +37,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-center flex-col w-full">
+      <Sale />
       {!isAuthenticated && <UpperHeader />}
       <header className="border-b border-black/10 bg-white w-full">
         <div className="mx-auto flex max-w-310 items-center justify-between gap-4 px-4 py-5 sm:px-8 lg:px-10 xl:px-0">

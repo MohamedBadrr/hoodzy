@@ -20,14 +20,24 @@ const Hero = () => {
           <Button className="w-full lg:w-fit">Shop Now</Button>
           <HeroNumbers />
         </div>
-        <div className="flex-1 relative">
-          <img src={heroImage} />
-          <div className="absolute  top-5 md:top-20  right-0 md:right-20">
-            <img className="max-sm:w-3/4 max-sm:h-3/4" src={star} />
-          </div>{" "}
-          <div className="absolute top-[40%] left-0">
-            <img className="w-1/2 h-1/2" src={star} />
-          </div>
+        <div className="relative flex flex-1 justify-center overflow-hidden">
+          <img
+            src={heroImage}
+            alt="Models wearing SHOP.CO clothing"
+            className="w-full max-w-155 object-contain"
+          />
+          <img
+            src={star}
+            alt=""
+            aria-hidden="true"
+            className="absolute right-[3%] top-[7%] h-11 w-11 sm:right-[7%] sm:top-[8%] sm:h-15 sm:w-15 md:h-18 md:w-18 lg:right-[11%] lg:top-[13%] xl:h-24 xl:w-24"
+          />
+          <img
+            src={star}
+            alt=""
+            aria-hidden="true"
+            className="absolute left-[3%] top-[42%] h-7 w-7 sm:left-[8%] sm:h-9 sm:w-9 md:h-11 md:w-11 lg:left-[2%] lg:top-[43%] xl:h-14 xl:w-14"
+          />
         </div>
       </div>
       <Brands />

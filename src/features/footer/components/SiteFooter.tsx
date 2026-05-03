@@ -24,11 +24,10 @@ const payments = [
 
 export default function SiteFooter() {
   return (
-    <footer className=" relative bg-[#f0f0f0] px-4 pb-8 pt-52 sm:px-8 sm:pt-42 md:pt-36 lg:px-25 lg:pt-32">
-      <div className="mx-auto max-w-310">
-        <NewsletterSignup />
-
-        <div className="block lg:hidden">
+    <footer className="mt-32 px-4 pb-8 pt-0 sm:mt-28 sm:px-8 md:mt-24 lg:mt-26 lg:px-25">
+      <NewsletterSignup />
+      <div className="mx-auto max-w-310  ">
+        <div className="pt-10 lg:hidden">
           <h2 className="font-inter text-3xl font-bold text-black">SHOP.CO</h2>
           <p className="mt-4 max-w-90 text-sm leading-relaxed text-black/60">
             We have clothes that suits your style and which you're proud to
@@ -48,7 +47,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-10 pt-9 sm:gap-x-10 lg:grid-cols-5 lg:gap-8">
+        <div className="grid  grid-cols-2 gap-x-5 gap-y-8 pb-10 pt-9 sm:gap-x-10 lg:grid-cols-5 lg:gap-8 lg:pt-12">
           <div className="hidden lg:block">
             <h2 className="font-inter text-3xl font-bold text-black">
               SHOP.CO

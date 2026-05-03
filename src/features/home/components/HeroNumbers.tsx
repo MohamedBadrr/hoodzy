@@ -36,7 +36,7 @@ const HeroNumbers = () => {
     };
   }, []);
   return (
-    <div className="flex items-center justify-center flex-row gap-4 lg:gap-8 px-12.75 lg:px-0 flex-wrap">
+    <div className="flex items-center mb-6 justify-center flex-row gap-4 lg:gap-8 px-12.75 lg:px-0 flex-wrap">
       <div>
         <p className="font-bold text-[24px] lg:text-[40px] text-black max-sm:text-center">
           {brands}+
