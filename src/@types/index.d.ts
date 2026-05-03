@@ -8,3 +8,10 @@
   image: string;
   category: string;
 };
+
+interface User {
+  id: string | number;
+  name: string;
+  email: string;
+  [key: string]: unknown;
+}

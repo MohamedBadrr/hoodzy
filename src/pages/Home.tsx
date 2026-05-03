@@ -1,15 +1,12 @@
-import Navbar from "../features/header/Navbar";
 import Hero from "../features/home/components/Hero";
 import DressStyleBrowser from "../features/home/components/DressStyleBrowser";
 import ProductsRecommended from "../features/home/components/ProductsRecommended";
 import { newArrivalProducts } from "../features/products/data/products";
 import HappyCustomers from "../features/reviews/components/HappyCustomers";
-import SiteFooter from "../features/footer/components/SiteFooter";
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
       <Hero />
       <ProductsRecommended newArrivalProducts={newArrivalProducts} />
       <ProductsRecommended
@@ -18,7 +15,6 @@ const Home = () => {
       />
       <DressStyleBrowser />
       <HappyCustomers />
-      <SiteFooter />
     </div>
   );
 };

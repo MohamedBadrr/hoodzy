@@ -1,5 +1,4 @@
 import { Heart, Truck, ShieldCheck, Headphones } from "lucide-react";
-import Navbar from "../features/header/Navbar";
 
 const values = [
   {
@@ -38,8 +37,6 @@ const stats = [
 const AboutUs = () => {
   return (
     <div>
-      <Navbar />
-
       {/* Hero Section */}
       <div className="bg-bg w-full px-25 py-20">
         <div className="max-w-3xl">
@@ -47,10 +44,10 @@ const AboutUs = () => {
             ABOUT SHOP.CO
           </h1>
           <p className="text-gray-600 text-lg leading-relaxed">
-            We believe that fashion should be accessible to everyone. Founded with a
-            passion for style and a commitment to quality, SHOP.CO brings you a
-            curated collection of clothing from the world's best brands — all in one
-            place.
+            We believe that fashion should be accessible to everyone. Founded
+            with a passion for style and a commitment to quality, SHOP.CO brings
+            you a curated collection of clothing from the world's best brands —
+            all in one place.
           </p>
         </div>
       </div>
@@ -63,7 +60,9 @@ const AboutUs = () => {
               key={stat.label}
               className="text-center border border-gray-200 rounded-2xl p-8"
             >
-              <p className="font-inter font-bold text-4xl mb-2">{stat.number}</p>
+              <p className="font-inter font-bold text-4xl mb-2">
+                {stat.number}
+              </p>
               <p className="text-gray-500">{stat.label}</p>
             </div>
           ))}
@@ -77,21 +76,21 @@ const AboutUs = () => {
             <h2 className="font-inter font-bold text-3xl mb-6">Our Story</h2>
             <div className="flex flex-col gap-4 text-gray-600 leading-relaxed">
               <p>
-                SHOP.CO started as a small idea — what if finding great clothes didn't
-                have to be so complicated? We were tired of jumping between stores and
-                websites trying to find pieces that matched our style without breaking
-                the bank.
+                SHOP.CO started as a small idea — what if finding great clothes
+                didn't have to be so complicated? We were tired of jumping
+                between stores and websites trying to find pieces that matched
+                our style without breaking the bank.
               </p>
               <p>
-                So we built something better. A single destination where quality meets
-                affordability, where trends meet timelessness, and where every customer
-                feels like they belong.
+                So we built something better. A single destination where quality
+                meets affordability, where trends meet timelessness, and where
+                every customer feels like they belong.
               </p>
               <p>
-                Today, we partner with over 200 brands worldwide to bring you a diverse
-                range of clothing that caters to every taste, size, and budget. Our team
-                is dedicated to making your shopping experience as smooth and enjoyable
-                as possible.
+                Today, we partner with over 200 brands worldwide to bring you a
+                diverse range of clothing that caters to every taste, size, and
+                budget. Our team is dedicated to making your shopping experience
+                as smooth and enjoyable as possible.
               </p>
             </div>
           </div>
@@ -130,7 +129,8 @@ const AboutUs = () => {
           Ready to Explore?
         </h2>
         <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-          Browse our collection and find the perfect pieces to elevate your wardrobe.
+          Browse our collection and find the perfect pieces to elevate your
+          wardrobe.
         </p>
         <a
           href="/products"

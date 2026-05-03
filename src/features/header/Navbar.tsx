@@ -130,9 +130,9 @@ const Navbar = () => {
                 className="cursor-pointer transition-all duration-200 hover:scale-115"
               />
             </Link>
-            <button type="button" aria-label="User account">
+            <Link to="/login" aria-label="User account">
               <CircleUserRound className="cursor-pointer transition-all duration-200 hover:scale-115" />
-            </button>
+            </Link>
           </div>
         </div>
 

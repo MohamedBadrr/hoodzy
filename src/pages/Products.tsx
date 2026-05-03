@@ -1,4 +1,3 @@
-import Navbar from "../features/header/Navbar";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import ProductCatalogHeader from "../features/products/components/ProductCatalogHeader";
 import ProductFilters from "../features/products/components/ProductFilters";
@@ -9,14 +8,10 @@ import { catalogProducts } from "../features/products/data/products";
 const Products = () => {
   return (
     <div>
-      <Navbar />
       <main className="mx-auto max-w-310 px-4 py-6 sm:px-8 lg:px-0">
         <BreadcrumbTrail
           className="mb-5"
-          items={[
-            { label: "Home", to: "/" },
-            { label: "Casual" },
-          ]}
+          items={[{ label: "Home", to: "/" }, { label: "Casual" }]}
         />
 
         <div className="grid gap-6 lg:grid-cols-[295px_1fr]">

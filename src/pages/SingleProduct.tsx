@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import Navbar from "../features/header/Navbar";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import ProductGallery from "../features/singleProduct/components/ProductGallery";
 import ProductInfo from "../features/singleProduct/components/ProductInfo";
@@ -136,7 +135,6 @@ const SingleProduct = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="mx-4 my-5 lg:mx-25 lg:my-10">
         <BreadcrumbTrail
           className="mb-8"

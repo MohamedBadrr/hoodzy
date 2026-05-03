@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import Navbar from "../features/header/Navbar";
 import { Button } from "../components/ui/button";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import CartItemsList from "../features/cart/components/CartItemsList";
@@ -35,7 +34,6 @@ const Cart = () => {
 
   return (
     <div>
-      <Navbar />
       <main className="mx-auto max-w-310 px-4 py-8 sm:px-8 lg:px-0">
         <BreadcrumbTrail
           className="mb-6"
