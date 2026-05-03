@@ -1,6 +1,6 @@
 import { Button } from "../../../components/ui/button";
 import HeroNumbers from "./HeroNumbers";
-import heroImage from "../../../assets/images/HeroIMage.png";
+import heroImage from "../../../assets/images/HeroImage.png";
 import star from "../../../assets/images/star.png";
 import Brands from "./Brands";
 const Hero = () => {
