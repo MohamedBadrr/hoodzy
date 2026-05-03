@@ -1,4 +1,5 @@
-import { useLocation } from "react-router";
+import { useMemo } from "react";
+import { useLocation, useSearchParams } from "react-router";
 import BreadcrumbTrail from "../components/shared/BreadcrumbTrail";
 import ProductCatalogHeader from "../features/products/components/ProductCatalogHeader";
 import ProductFilters from "../features/products/components/ProductFilters";
@@ -17,6 +18,20 @@ const routeLabels: Record<string, string> = {
 const Products = () => {
   const { pathname } = useLocation();
   const pageLabel = routeLabels[pathname] ?? "Products";
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get("search")?.trim() ?? "";
+  const normalizedSearchTerm = searchTerm.toLowerCase();
+  const filteredProducts = useMemo(() => {
+    if (!normalizedSearchTerm) return catalogProducts;
+
+    return catalogProducts.filter((product) =>
+      [product.name, product.category]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalizedSearchTerm),
+    );
+  }, [normalizedSearchTerm]);
+  const title = searchTerm ? `Search results for "${searchTerm}"` : pageLabel;
 
   return (
     <div>
@@ -33,11 +48,24 @@ const Products = () => {
 
           <section>
             <ProductCatalogHeader
-              title={pageLabel}
-              total={catalogProducts.length * 11}
+              title={title}
+              total={filteredProducts.length}
             />
-            <ProductGrid products={catalogProducts} />
-            <ProductPagination />
+            {filteredProducts.length > 0 ? (
+              <>
+                <ProductGrid products={filteredProducts} />
+                <ProductPagination />
+              </>
+            ) : (
+              <div className="rounded-[20px] border border-black/10 px-6 py-16 text-center">
+                <h2 className="text-xl font-bold text-black">
+                  No products found
+                </h2>
+                <p className="mt-2 text-sm text-black/60">
+                  Try searching for another product name or category.
+                </p>
+              </div>
+            )}
           </section>
         </div>
       </main>

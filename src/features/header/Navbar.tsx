@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import UpperHeader from "./UpperHeader";
 import { Input } from "../../components/ui/input";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import { toast } from "sonner";
 import {
   Drawer,
@@ -28,11 +28,23 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const logout = useAuthStore((state) => state.logout);
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search") ?? "";
 
   const handleLogout = () => {
     logout();
     toast.success("Logged out successfully");
     navigate("/login");
+  };
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value.trim();
+
+    if (!query) {
+      navigate("/products");
+      return;
+    }
+
+    navigate(`/products?search=${query}`);
   };
 
   return (
@@ -84,6 +96,8 @@ const Navbar = () => {
                   <Input
                     className="h-12 bg-[#F0F0F0] text-gray-500"
                     placeholder="Search for products.."
+                    value={searchQuery}
+                    onChange={handleSearch}
                     icon={<Search className="text-gray-500" size={19} />}
                   />
                 </div>
@@ -113,6 +127,8 @@ const Navbar = () => {
             <Input
               className="h-12 bg-[#F0F0F0] text-gray-500"
               placeholder="Search for products.."
+              value={searchQuery}
+              onChange={handleSearch}
               icon={<Search className="text-gray-500" size={19} />}
             />
           </div>
