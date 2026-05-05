@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 const DISCOUNT_RATE = 0.2;
 const DELIVERY_FEE = 15;
-export const PROMO_CODE = "HOODZY10";
+export const PROMO_CODE = "SHOP.CO10";
 const PROMO_DISCOUNT_RATE = 0.1;
 
 export type CartItem = {
